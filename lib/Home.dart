@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recylce/Buy Items.dart';
 import 'package:recylce/Sell items.dart';
 
 void main() => runApp(Home());
@@ -85,7 +86,10 @@ class Homepage extends StatelessWidget {
                     ),
                   )),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Buyitems()));
+                },
               ),
             ],
           ),
