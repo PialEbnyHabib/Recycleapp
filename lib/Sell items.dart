@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recylce/Home.dart';
+import "package:recylce/Recycle Items.dart";
 
 void main() => runApp(Sellitems());
 
@@ -59,7 +60,8 @@ class Sellitems extends StatelessWidget {
                   )),
                 ),
                 onTap: () {
-                  print("ok");
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Recycleitems()));
                 },
               ),
               SizedBox(width: 15),
