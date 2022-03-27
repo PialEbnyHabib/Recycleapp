@@ -28,6 +28,8 @@ class Homepage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
+                    image:
+                        DecorationImage(image: AssetImage('Images/icon.png')),
                     color: Colors.green[400],
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(110),
