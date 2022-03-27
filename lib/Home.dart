@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recylce/Sell items.dart';
 
 void main() => runApp(Home());
 
@@ -62,7 +63,8 @@ class Homepage extends StatelessWidget {
                   )),
                 ),
                 onTap: () {
-                  print("sell");
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Sellitems()));
                 },
               ),
               SizedBox(width: 15),
@@ -83,9 +85,7 @@ class Homepage extends StatelessWidget {
                     ),
                   )),
                 ),
-                onTap: () {
-                  print("buy");
-                },
+                onTap: () {},
               ),
             ],
           ),
