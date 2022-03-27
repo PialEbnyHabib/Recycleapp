@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:recylce/Home.dart';
-import "package:recylce/Recycle Items.dart";
+import 'package:recylce/Sell items.dart';
 
-void main() => runApp(Buyitems());
+void main() => runApp(Useditems());
 
-class Buyitems extends StatelessWidget {
+class Useditems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +13,8 @@ class Buyitems extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (BuildContext context) => Home())),
+              MaterialPageRoute(
+                  builder: (BuildContext context) => Sellitems())),
         ),
         title: Text("Recycle"),
         backgroundColor: Colors.green[400],
