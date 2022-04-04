@@ -8,7 +8,7 @@ class Chat extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Recycle"),
+          title: Text("Chat"),
           backgroundColor: Colors.green[400],
           centerTitle: true,
         ),

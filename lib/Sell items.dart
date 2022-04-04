@@ -16,7 +16,7 @@ class Sellitems extends StatelessWidget {
             onPressed: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (BuildContext context) => Home())),
           ),
-          title: Text("Recycle"),
+          title: Text("Sell items"),
           backgroundColor: Colors.green[400],
           centerTitle: true,
         ),

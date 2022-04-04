@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recylce/Home.dart';
 import "package:recylce/Sell items.dart";
+import 'package:recylce/Recycle product/Bottles.dart';
 
 void main() => runApp(Recycleitems());
 
@@ -16,7 +17,7 @@ class Recycleitems extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (BuildContext context) => Sellitems())),
           ),
-          title: Text("Recycle"),
+          title: Text("Recycle items"),
           backgroundColor: Colors.green[400],
           centerTitle: true,
         ),
@@ -58,7 +59,8 @@ class Recycleitems extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    print("ok");
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (BuildContext context) => Bottles()));
                   },
                 ),
                 // name

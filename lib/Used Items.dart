@@ -16,7 +16,7 @@ class Useditems extends StatelessWidget {
               MaterialPageRoute(
                   builder: (BuildContext context) => Sellitems())),
         ),
-        title: Text("Recycle"),
+        title: Text("Used Items"),
         backgroundColor: Colors.green[400],
         centerTitle: true,
       ),

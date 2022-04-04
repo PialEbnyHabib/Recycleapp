@@ -8,7 +8,7 @@ class cart extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Recycle"),
+          title: Text("Cart"),
           backgroundColor: Colors.green[400],
           centerTitle: true,
         ),
