@@ -1,44 +1,37 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:recylce/FetchProducts.dart';
+import 'package:recylce/Recycle Items.dart';
 
-void main() => runApp(cart());
+class Cart extends StatefulWidget {
+  @override
+  _CartState createState() => _CartState();
+}
 
-class cart extends StatelessWidget {
+class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Cart"),
-          backgroundColor: Colors.green[400],
-          centerTitle: true,
-        ),
-        body: Column(children: <Widget>[
-          Row(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height / 4,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    image:
-                        DecorationImage(image: AssetImage('Images/icon.png')),
-                    color: Colors.green[400],
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(110),
-                      bottomRight: Radius.circular(110),
-                    )),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 60,
-          ),
-          const Center(
-            child: Text(
-              'Cart',
-              style: TextStyle(fontSize: 50),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircleAvatar(
+            backgroundColor: Colors.green[400],
+            child: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => Recycleitems())),
             ),
           ),
-        ]),
+        ),
+      ),
+      body: SafeArea(
+        child: fetchData("users-cart-items"),
       ),
     );
   }

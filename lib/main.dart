@@ -1,58 +1,38 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:recylce/Chat.dart';
-import 'package:recylce/cart.dart';
-import 'package:recylce/Home.dart';
+import 'package:recylce/SplashScreen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+// Replace with actual values
+    options: FirebaseOptions(
+      apiKey: "AIzaSyBR6slG0_wD3utSFpuVl1ocppsMLmEFkZU ",
+      appId: "1:503361472388:android:6b90507f325e499e62bfd1",
+      messagingSenderId: "503361472388 ",
+      projectId: "recycleapps-d1e61",
+    ),
+  );
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Homepage());
-  }
-}
-
-class Homepage extends StatefulWidget {
-  // This widget is the root of your application.
-  @override
-  _HomepageState createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
-  var _currentindex = 0;
-  final pages = [Home(), Chat(), cart()];
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.green[400],
-            iconSize: 40,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.chat),
-                label: 'Chat',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart),
-                label: 'Cart',
-              ),
-            ],
-            onTap: (index) {
-              setState(
-                () {
-                  _currentindex = index;
-                },
-              );
-            },
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      builder: () {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Recycle',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
           ),
-          body: pages[_currentindex]),
+          home: SplashScreen(),
+        );
+      },
     );
   }
 }
