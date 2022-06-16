@@ -36,3 +36,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+// if picture is not loading(decoding error)
+
+// flutter run -d chrome --web-renderer html 

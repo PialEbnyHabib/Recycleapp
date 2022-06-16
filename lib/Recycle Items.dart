@@ -47,7 +47,7 @@ class RecycleProduct extends State<Recycleitems> {
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
+            icon: Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                     builder: (BuildContext context) => Sellitems())),

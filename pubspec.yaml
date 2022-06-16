@@ -41,6 +41,9 @@ dependencies:
   dots_indicator: ^2.0.0
   firebase_auth: ^3.3.13
   firebase_core: ^1.14.0
+  image_picker: ^0.8.5+3
+  permission_handler: ^9.2.0
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:
