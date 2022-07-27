@@ -1,64 +1,36 @@
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, unused_import
+
 import 'package:flutter/material.dart';
-import 'package:recylce/Home.dart';
-import "package:recylce/Sell items.dart";
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:recylce/Product_details_screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:recylce/Chemical.dart';
+import 'package:recylce/Electronics.dart';
+import 'package:recylce/Household.dart';
+import 'package:recylce/Metals.dart';
+import 'package:recylce/Papers.dart';
+import 'package:recylce/Plastic.dart';
+import 'package:recylce/Product_category.dart';
+import 'package:recylce/Sell items.dart';
 
-class Recycleitems extends StatefulWidget {
-  Recycleitems();
-  @override
-  RecycleProduct createState() => RecycleProduct();
-}
+void main() => runApp(Recycleitems());
 
-class RecycleProduct extends State<Recycleitems> {
-  //final databaseReference = FirebaseFirestore.instance;
-
-  List _Product = [];
-  var _firestoreInstance = FirebaseFirestore.instance;
-
-  fetchProductsdata() async {
-    QuerySnapshot qn =
-        await _firestoreInstance.collection("Recycle items").get();
-    setState(() {
-      for (int i = 0; i < qn.docs.length; i++) {
-        _Product.add({
-          "Image": qn.docs[i]["Image"],
-          "Name": qn.docs[i]["Name"],
-          "Price": qn.docs[i]["Price"],
-        });
-      }
-    });
-
-    return qn.docs;
-  }
-
-  @override
-  void initState() {
-    fetchProductsdata();
-    super.initState();
-  }
-
+class Recycleitems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () => Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                    builder: (BuildContext context) => Sellitems())),
-          ),
-          title: Text("Recycle items"),
-          backgroundColor: Colors.green[400],
-          centerTitle: true,
+        home: Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                  builder: (BuildContext context) => Sellitems())),
         ),
-
-        //fetch product
-        body: Column(
+        title: Text("Recycle items"),
+        backgroundColor: Colors.green[400],
+        centerTitle: true,
+      ),
+      body: Center(
+        child: ListView(
+          shrinkWrap: true,
           children: <Widget>[
             Row(
               children: [
@@ -77,61 +49,547 @@ class RecycleProduct extends State<Recycleitems> {
               ],
             ),
             SizedBox(
-              height: 30,
+              height: 60,
             ),
-
-            //show fetching products
-            Expanded(
-              child: GridView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: _Product.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, childAspectRatio: 1),
-                  itemBuilder: (_, index) {
-                    return GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => ProductDetails(_Product[index]))),
-                      child: Card(
-                        elevation: 3,
-                        child: Column(
-                          children: [
-                            AspectRatio(
-                              aspectRatio: 2,
-                              child: Container(
-                                  child:
-                                      Image.network(_Product[index]["Image"])),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              "${_Product[index]["Name"]}",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                  color: Color.fromARGB(255, 27, 27, 27)),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Text(
-                              "Price:${_Product[index]["Price"].toString()}",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                  color: Color.fromARGB(255, 27, 27, 27)),
-                            ),
-                          ],
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Column(
+                children: [
+                  Container(
+                    color: Color.fromARGB(255, 211, 255, 209),
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
                         ),
+                        const SizedBox(width: 15),
+                        Expanded(
+                          child: Container(
+                              color: Color.fromARGB(255, 211, 255, 209),
+                              child: Text(
+                                'Popular Category',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ),
+                              )),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            color: Colors.white24,
+                            width: 80,
+                            height: 75,
+                            child: Center(
+                              child: Image(
+                                width: 25,
+                                height: 25,
+                                image: AssetImage('Images/catagory.ico'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 35,
+            ),
+            ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Column(
+                  children: [
+                    Container(
+                      color: Colors.green[400],
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Color.fromARGB(255, 211, 255, 209),
+                              child: Material(
+                                child: Ink.image(
+                                  width: 50,
+                                  height: 50,
+                                  image: AssetImage('Images/household.ico'),
+                                  fit: BoxFit.cover,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  Household()));
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: InkWell(
+                              child: Container(
+                                  color: Color.fromARGB(255, 211, 255, 209),
+                                  child: Text(
+                                    'Household',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,
+                                    ),
+                                  )),
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Household()));
+                              },
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.white24,
+                              width: 67,
+                              height: 60,
+                              child: Center(
+                                child: Material(
+                                  child: Ink.image(
+                                    width: 25,
+                                    height: 25,
+                                    image: AssetImage('Images/arrow.ico'),
+                                    fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Household()));
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    );
-                  }),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      color: Colors.green[400],
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Color.fromARGB(255, 211, 255, 209),
+                              child: Material(
+                                child: Ink.image(
+                                  width: 50,
+                                  height: 50,
+                                  image: AssetImage('Images/plastic.ico'),
+                                  fit: BoxFit.cover,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  Plastic()));
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: InkWell(
+                              child: Container(
+                                  color: Color.fromARGB(255, 211, 255, 209),
+                                  child: Text(
+                                    'Plastic',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,
+                                    ),
+                                  )),
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Plastic()));
+                              },
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.white24,
+                              width: 67,
+                              height: 60,
+                              child: Center(
+                                child: Material(
+                                  child: Ink.image(
+                                    width: 25,
+                                    height: 25,
+                                    image: AssetImage('Images/arrow.ico'),
+                                    fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Plastic()));
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      color: Colors.green[400],
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Color.fromARGB(255, 211, 255, 209),
+                              child: Material(
+                                child: Ink.image(
+                                  width: 50,
+                                  height: 50,
+                                  image: AssetImage('Images/electronics.ico'),
+                                  fit: BoxFit.cover,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  Electronics()));
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: InkWell(
+                              child: Container(
+                                  color: Color.fromARGB(255, 211, 255, 209),
+                                  child: Text(
+                                    'Electronics',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,
+                                    ),
+                                  )),
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Electronics()));
+                              },
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.white24,
+                              width: 67,
+                              height: 60,
+                              child: Center(
+                                child: Material(
+                                  child: Ink.image(
+                                    width: 25,
+                                    height: 25,
+                                    image: AssetImage('Images/arrow.ico'),
+                                    fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Electronics()));
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      color: Colors.green[400],
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.green[400],
+                              child: Material(
+                                child: Ink.image(
+                                  width: 50,
+                                  height: 50,
+                                  image: AssetImage(
+                                      'Images/paper & cardboards.ico'),
+                                  fit: BoxFit.cover,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  Papers()));
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: InkWell(
+                              child: Container(
+                                  color: Color.fromARGB(255, 211, 255, 209),
+                                  child: Text(
+                                    'Papers',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,
+                                    ),
+                                  )),
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Papers()));
+                              },
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.white24,
+                              width: 67,
+                              height: 60,
+                              child: Center(
+                                child: Material(
+                                  child: Ink.image(
+                                    width: 25,
+                                    height: 25,
+                                    image: AssetImage('Images/arrow.ico'),
+                                    fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Papers()));
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      color: Colors.green[400],
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.green[400],
+                              child: Material(
+                                child: Ink.image(
+                                  width: 50,
+                                  height: 50,
+                                  image: AssetImage('Images/chemical.ico'),
+                                  fit: BoxFit.cover,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  Chemical()));
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: InkWell(
+                              child: Container(
+                                  color: Color.fromARGB(255, 211, 255, 209),
+                                  child: Text(
+                                    'Chemical',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,
+                                    ),
+                                  )),
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Chemical()));
+                              },
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.white24,
+                              width: 67,
+                              height: 60,
+                              child: Center(
+                                child: Material(
+                                  child: Ink.image(
+                                    width: 25,
+                                    height: 25,
+                                    image: AssetImage('Images/arrow.ico'),
+                                    fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Chemical()));
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      color: Colors.green[400],
+                      child: Row(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Color.fromARGB(255, 211, 255, 209),
+                              child: Material(
+                                child: Ink.image(
+                                  width: 50,
+                                  height: 50,
+                                  image: AssetImage('Images/metals2.ico'),
+                                  fit: BoxFit.cover,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  Metals()));
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: InkWell(
+                              child: Container(
+                                  color: Color.fromARGB(255, 211, 255, 209),
+                                  child: Text(
+                                    'Metals',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,
+                                    ),
+                                  )),
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Metals()));
+                              },
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Container(
+                              color: Colors.white24,
+                              width: 67,
+                              height: 60,
+                              child: Center(
+                                child: Material(
+                                  child: Ink.image(
+                                    width: 25,
+                                    height: 25,
+                                    image: AssetImage('Images/arrow.ico'),
+                                    fit: BoxFit.cover,
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Metals()));
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                )),
+            SizedBox(
+              height: 25,
             ),
           ],
         ),
       ),
-    );
+    ));
   }
 }

@@ -1,9 +1,12 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:recylce/Recycle Items.dart';
+import 'package:recylce/Product_category.dart';
+import 'package:recylce/Buy items.dart';
 
 class ProductDetails extends StatefulWidget {
   var _product;
@@ -73,7 +76,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 .snapshots(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data == null) {
-                return Text("");
+                return Text("This is a wastage material");
               }
               return Padding(
                 padding: const EdgeInsets.only(right: 8),
@@ -105,6 +108,11 @@ class _ProductDetailsState extends State<ProductDetails> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(
+                child: SizedBox(
+                    height: 245,
+                    width: 160,
+                    child: Image.network(widget._product['Image']))),
             Text(
               widget._product['Name'],
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),

@@ -33,6 +33,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  url_launcher: ^6.1.5
   get: ^4.6.1
   provider: ^6.0.2
   cloud_firestore: ^2.3.0
@@ -44,6 +45,8 @@ dependencies:
   image_picker: ^0.8.5+3
   permission_handler: ^9.2.0
   carousel_slider: ^4.1.1
+  firebase_storage: ^10.2.18
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +76,67 @@ flutter:
     - Images/Pens.png
     - Images/Papers.png
     - Images/Metals.png
+    - Images/sell.ico
+    - Images/buy.ico
+    - Images/recycle.ico
+    - Images/used.ico
+    - Images/household.ico
+    - Images/plastic.ico
+    - Images/electronics.ico
+    - Images/paper & cardboards.ico
+    - Images/chemical.ico
+    - Images/metals2.ico
+    - Images/arrow.ico
+    - Images/catagory.ico
+    - Images/furniture.jpg
+    - Images/ceramics.jpg
+    - Images/aerosol.jpg
+    - Images/mattress.png
+    - Images/textile.jpg
+    - Images/vaccume.jpg
+    - Images/upload1.ico
+    - Images/bubble1.jpg
+    - Images/bottle1.jpg
+    - Images/lid.jpg
+    - Images/bag.jpg
+    - Images/polystyrene.png
+    - Images/accessories1.png
+    - Images/kitchen.png
+    - Images/electronic_household.png
+    - Images/electronic_devices.jpg
+    - Images/wires.jpg
+    - Images/color.jpg
+    - Images/newspaper1.jpg
+    - Images/tissue.jpg
+    - Images/cardboard.jpg
+    - Images/paint.jpg
+    - Images/drum1.jpg
+    - Images/acid.jpg
+    - Images/pesticide.jpg
+    - Images/can.jpg
+    - Images/scrap.jpg
+    - Images/industry.jpg
+    - Images/metal_kitchen.jpg
+    - Images/devices.jpg
+    - Images/kitchen_pro1.jpg
+    - Images/buy_icon.ico
+    - Images/sell_icon.ico
+    - Images/pickup.ico
+    - Images/buy_icon1.png
+    - Images/sell_icon1.png
+    - Images/pickup1.jpg
+    - Images/info.ico
+    - Images/bag_items.jpg
+    - Images/book_a_pickup.jpg
+    - Images/glass.jpg
+    - Images/flash.jpg
+    - Images/for_you.png
+    - Images/new_arrival.jpg
+    - Images/viewed.png
+    
+
+
+    
 
   #   - images/a_dot_ham.jpeg
 

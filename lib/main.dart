@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:recylce/SplashScreen.dart';
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
           title: 'Recycle',
           theme: ThemeData(
             primarySwatch: Colors.blue,
+            scaffoldBackgroundColor: Colors.transparent,
           ),
           home: SplashScreen(),
         );
@@ -43,3 +46,7 @@ class MyApp extends StatelessWidget {
 // if picture is not loading(decoding error)
 
 // flutter run -d chrome --web-renderer html 
+
+// shakil123@gmail.com
+
+// Recycle123
