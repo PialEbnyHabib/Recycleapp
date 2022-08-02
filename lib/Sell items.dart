@@ -27,17 +27,17 @@ class Sellitems extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    image:
-                        DecorationImage(image: AssetImage('Images/icon.png')),
+                    image: const DecorationImage(
+                        image: AssetImage('Images/icon.png')),
                     color: Colors.green[400],
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(110),
                       bottomRight: Radius.circular(110),
                     )),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 60,
           ),
           Row(
@@ -51,7 +51,7 @@ class Sellitems extends StatelessWidget {
                     color: Colors.green[400],
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     "Recycle Items",
                     style: TextStyle(
@@ -65,7 +65,7 @@ class Sellitems extends StatelessWidget {
                       builder: (BuildContext context) => Recycleitems()));
                 },
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               InkWell(
                 child: Container(
                   height: 100,
@@ -74,7 +74,7 @@ class Sellitems extends StatelessWidget {
                     color: Colors.green[400],
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     "Used Items",
                     style: TextStyle(
@@ -85,12 +85,12 @@ class Sellitems extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => Useditems()));
+                      builder: (BuildContext context) => const UsedItems()));
                 },
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
         ]),
