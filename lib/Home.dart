@@ -1,39 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:recylce/Sell items.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+// ignore_for_file: prefer_const_constructors
 
-final List data = [
-  {
-    "title": "Image 1",
-    "url":
-        "https://ecocycle.com.au/wp-content/uploads/2019/04/Why-recycling-is-important-for-the-future.jpg"
-  },
-  {
-    "title": "Image 2",
-    "url":
-        "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F23%2F2021%2F04%2F28%2Frecycling-for-money-2000.jpg"
-  },
-  {
-    "title": "Image 3",
-    "url":
-        "https://media.generalkinematics.com/wp-content/uploads/2014/04/plastic-recycling-955x500.png"
-  },
-  {
-    "title": "Image 4",
-    "url":
-        "https://media.greenmatters.com/brand-img/d-9yrYj4m/0x0/why-is-recycling-important-1587135431361.jpg"
-  },
-  {
-    "title": "Image 5",
-    "url":
-        "https://ecocycle.com.au/wp-content/uploads/2019/08/Fun-Facts_-Why-is-recycling-important_.jpg"
-  },
-  {
-    "title": "Image 6",
-    "url":
-        "https://thumbs.dreamstime.com/b/recycle-waste-bins-different-trash-types-color-containers-sorting-wastes-organic-trash-paper-can-glass-plastic-bottle-150034531.jpg"
-  },
-];
+import 'package:flutter/material.dart';
+import 'package:recylce/Chemical.dart';
+import 'package:recylce/Electronics.dart';
+import 'package:recylce/Metals.dart';
+import 'package:recylce/Papers.dart';
+import 'package:recylce/Pickup.dart';
+import 'package:recylce/Plastic.dart';
+import 'package:recylce/Sell items.dart';
+import 'package:recylce/Buy items.dart';
+
 void main() => runApp(Home());
 
 class Home extends StatelessWidget {
@@ -51,17 +27,18 @@ class Homepage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text("Recycle"),
           backgroundColor: Colors.green[400],
           centerTitle: true,
           leading: IconButton(
-              icon: Icon(Icons.menu, color: Colors.white), onPressed: () {}),
+              icon: Icon(Icons.menu, color: Colors.blue), onPressed: () {}),
         ),
 
         // body
 
-        body: Column(children: <Widget>[
+        body: ListView(shrinkWrap: true, children: <Widget>[
           Row(
             children: [
               Container(
@@ -79,77 +56,617 @@ class Homepage extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 60,
+            height: 10,
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                color: Color.fromARGB(255, 219, 250, 222),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        color: Color.fromARGB(255, 219, 250, 222),
+                        child: Material(
+                          child: Ink.image(
+                            width: 40,
+                            height: 40,
+                            image: AssetImage('Images/sell_icon1.png'),
+                            fit: BoxFit.cover,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Sellitems()));
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 75),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        color: Color.fromARGB(255, 219, 250, 222),
+                        child: Material(
+                          child: Ink.image(
+                            width: 40,
+                            height: 40,
+                            image: AssetImage('Images/buy_icon1.png'),
+                            fit: BoxFit.cover,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            Buyitems()));
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 75),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        color: Color.fromARGB(255, 219, 250, 222),
+                        width: 50,
+                        height: 50,
+                        child: Center(
+                          child: Material(
+                            child: Ink.image(
+                              width: 40,
+                              height: 40,
+                              image: AssetImage('Images/pickup1.jpg'),
+                              fit: BoxFit.cover,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Pickup()));
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Container(
+              color: Color.fromARGB(255, 219, 250, 222),
+              child: Text(
+                "Did you know that more than 20% of what goes in your Household bin can be recycled? Turn these recyclable Wastes to cash! The wastes you throw away everyday can fetch you money. For only 20 taka a bag, we will collect your recyclables from your door, on demand. Recycling couldn't be easier!",
+                style: TextStyle(
+                  fontStyle: FontStyle.normal,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Column(
+              children: [
+                Container(
+                  color: Color.fromARGB(255, 211, 255, 209),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: Container(
+                            color: Color.fromARGB(255, 211, 255, 209),
+                            child: Text(
+                              'What we collect',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green,
+                              ),
+                            )),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          color: Colors.white24,
+                          width: 80,
+                          height: 55,
+                          child: Center(
+                            child: Image(
+                              width: 25,
+                              height: 25,
+                              image: AssetImage('Images/info.ico'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
                 child: Container(
-                  height: 100,
-                  width: 150,
+                  height: 50,
+                  width: 65,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                    "Sell Items",
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontSize: 20,
-                    ),
-                  )),
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/paper & cardboards.ico')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
                 ),
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => Sellitems()));
+                      builder: (BuildContext context) => Papers()));
                 },
               ),
-              SizedBox(width: 15),
+              SizedBox(width: 0),
               InkWell(
                 child: Container(
-                  height: 100,
-                  width: 150,
+                  height: 50,
+                  width: 65,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/plastic.ico')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Plastic()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 50,
+                  width: 65,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/metals2.ico')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Metals()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 50,
+                  width: 65,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/chemical.ico')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Chemical()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 50,
+                  width: 65,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/electronics.ico')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Electronics()));
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: 3),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                child: Container(
+                  height: 25,
+                  width: 65,
                   decoration: BoxDecoration(
                     color: Colors.green[400],
-                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
+                  child: Align(
+                      alignment: Alignment.center,
                       child: Text(
-                    "Buy Items",
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      fontSize: 20,
+                        "Papers",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 13,
+                        ),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Papers()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 25,
+                  width: 65,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                  ),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Plastics",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 13,
+                        ),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Plastic()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 25,
+                  width: 65,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                  ),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Metals",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 13,
+                        ),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Metals()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 25,
+                  width: 65,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                  ),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Chemicals",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 13,
+                        ),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Chemical()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 25,
+                  width: 65,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Electronics",
+                      style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontSize: 13,
+                      ),
                     ),
-                  )),
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Electronics()));
+                },
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Column(
+              children: [
+                Container(
+                  color: Color.fromARGB(255, 211, 255, 209),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: Container(
+                            color: Color.fromARGB(255, 211, 255, 209),
+                            child: Text(
+                              'How it works',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green,
+                              ),
+                            )),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          color: Colors.white24,
+                          width: 80,
+                          height: 55,
+                          child: Center(
+                            child: Image(
+                              width: 25,
+                              height: 25,
+                              image: AssetImage('Images/info.ico'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                child: Container(
+                  height: 90,
+                  width: 95,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/bag_items.jpg')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {},
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 90,
+                  width: 95,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/book_a_pickup.jpg')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {},
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 90,
+                  width: 95,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/pickup1.jpg')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {},
+              ),
+            ],
+          ),
+          SizedBox(height: 3),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                child: Container(
+                  height: 40,
+                  width: 95,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(11),
+                      topRight: Radius.circular(11),
+                      bottomLeft: Radius.circular(11),
+                      bottomRight: Radius.circular(11),
+                    ),
+                  ),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Bag your\nitems",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                        ),
+                      )),
+                ),
+                onTap: () {},
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 40,
+                  width: 95,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(11),
+                      topRight: Radius.circular(11),
+                      bottomLeft: Radius.circular(11),
+                      bottomRight: Radius.circular(11),
+                    ),
+                  ),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Book a\npickup",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 14,
+                        ),
+                      )),
+                ),
+                onTap: () {},
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 40,
+                  width: 95,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(11),
+                      topRight: Radius.circular(11),
+                      bottomLeft: Radius.circular(11),
+                      bottomRight: Radius.circular(11),
+                    ),
+                  ),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "We'll\ncollect it",
+                      style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
                 ),
                 onTap: () {},
               ),
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height / 6,
+            height: 20,
           ),
-          Column(
-            children: [
-              // Implement the image carousel
-              CarouselSlider(
-                options: CarouselOptions(
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 2),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 400),
-                  height: MediaQuery.of(context).size.height / 4.5,
-                  enlargeCenterPage: true,
-                  scrollDirection: Axis.vertical,
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Container(
+              color: Color.fromARGB(255, 219, 250, 222),
+              child: Text(
+                "Help us help you to keep your city safe and grab a few bucks in the process. Recycling couldn't be easier!",
+                style: TextStyle(
+                  fontStyle: FontStyle.normal,
+                  fontSize: 18,
                 ),
-                items: data.map((item) {
-                  return GridTile(
-                    child: Image.network(item["url"], fit: BoxFit.contain),
-                  );
-                }).toList(),
               ),
-            ],
+            ),
           ),
         ]),
       ),

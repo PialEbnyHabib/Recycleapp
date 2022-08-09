@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:recylce/FetchProducts.dart';
 import 'package:recylce/Recycle Items.dart';
+import 'package:recylce/Product_category.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _CartState extends State<Cart> {
               icon: Icon(Icons.arrow_back, color: Colors.black),
               onPressed: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (BuildContext context) => Recycleitems())),
+                      builder: (BuildContext context) => ProductCategory())),
             ),
           ),
         ),
