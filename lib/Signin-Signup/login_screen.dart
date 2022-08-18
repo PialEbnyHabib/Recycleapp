@@ -42,6 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  signOut() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +56,13 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 150.h,
+              height: 200.h,
               width: ScreenUtil().screenWidth,
               child: Padding(
-                padding: EdgeInsets.only(left: 20),
+                padding: EdgeInsets.only(left: 40),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
                       onPressed: null,
@@ -65,10 +71,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.transparent,
                       ),
                     ),
-                    Text(
-                      "Sign In",
-                      style: TextStyle(fontSize: 22, color: Colors.white),
-                    ),
+                    // Text(
+                    //   "Sign In",
+                    //   style: TextStyle(fontSize: 22, color: Colors.white),
+                    //  ),
+                    Image(image: AssetImage('Images/icon.png')),
                   ],
                 ),
               ),
@@ -79,53 +86,50 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(28),
-                    topRight: Radius.circular(28),
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(40),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Log In",
+                          style: TextStyle(
+                              fontSize: 35,
+                              color: Colors.green[400],
+                              fontFamily: 'Rubik Dirt '),
+                        ),
+
                         SizedBox(
                           height: 20,
                         ),
-                        Text(
-                          "Recycle",
-                          style:
-                              TextStyle(fontSize: 22, color: Colors.green[400]),
-                        ),
-                        Text(
-                          "Sell your unwanted items",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xFFBBBBBB),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
+
                         Row(
                           children: [
                             Container(
-                              height: 48,
-                              width: 41,
+                              height: 48.h,
+                              width: 41.w,
                               decoration: BoxDecoration(
                                   color: Colors.green[400],
-                                  borderRadius: BorderRadius.circular(12)),
+                                  borderRadius: BorderRadius.circular(12.r)),
                               child: Center(
                                 child: Icon(
                                   Icons.email_outlined,
                                   color: Colors.white,
-                                  size: 20,
+                                  size: 20.w,
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 10.w,
                             ),
                             Expanded(
                               child: TextField(
@@ -142,26 +146,26 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 30.h,
                         ),
                         Row(
                           children: [
                             Container(
-                              height: 48,
-                              width: 41,
+                              height: 48.h,
+                              width: 41.w,
                               decoration: BoxDecoration(
                                   color: Colors.green[400],
-                                  borderRadius: BorderRadius.circular(12)),
+                                  borderRadius: BorderRadius.circular(12.r)),
                               child: Center(
                                 child: Icon(
                                   Icons.lock_outline,
                                   color: Colors.white,
-                                  size: 20,
+                                  size: 20.w,
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 10.w,
                             ),
                             Expanded(
                               child: TextField(
@@ -203,6 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 50.h,
                         ),
+
                         // elevated button
                         customButton(
                           "Sign In",

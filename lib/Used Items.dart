@@ -18,9 +18,9 @@ class _UsedItemsState extends State<UsedItems> {
 
   final TextEditingController _Controller = TextEditingController();
   final TextEditingController _Controller1 = TextEditingController();
-
   final TextEditingController _Controlle2 = TextEditingController();
   final TextEditingController _Controlle3 = TextEditingController();
+  List<String> Catagory = ["Paper", "Metal", "Plastic", "Household", "Vehicle"];
 
   Future pickImage() async {
     try {
@@ -134,33 +134,33 @@ class _UsedItemsState extends State<UsedItems> {
           const SizedBox(
             height: 5,
           ),
-          Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: TextField(
-              controller: _Controller,
-              enableInteractiveSelection: true,
-              obscureText: false,
-              decoration: const InputDecoration(
-                focusColor: Color.fromARGB(255, 239, 248, 245),
-                hintText: "Select Catagory",
-                hintStyle: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 15,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromARGB(255, 2, 4, 7),
-                  ),
-                ),
-                // focusedBorder: OutlineInputBorder(
-                //   // borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                //   borderSide: BorderSide(
-                //     color: Color(0xffEFF3F8),
-                //   ),
-                // ),
+
+          // Catagory selection
+
+          TextField(
+            controller: _Controller,
+            readOnly: true,
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(20.0),
+              hintText: "Select Catagory",
+              suffixIcon: DropdownButton<String>(
+                items: Catagory.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: new Text(value),
+                    onTap: () {
+                      setState(() {
+                        _Controller.text = value;
+                      });
+                    },
+                  );
+                }).toList(),
+                onChanged: (_) {},
               ),
             ),
           ),
+
+          // END of category selection
           const SizedBox(
             height: 10,
           ),

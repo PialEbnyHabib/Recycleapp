@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:recylce/Chemical.dart';
 import "package:recylce/Used Items.dart";
+import 'package:recylce/Used Items.dart';
 
 void main() => runApp(Acid());
 
@@ -111,7 +112,7 @@ class Acid extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (BuildContext context) => Useditems()));
+                        builder: (BuildContext context) => UsedItems()));
                   },
                 ),
               ],

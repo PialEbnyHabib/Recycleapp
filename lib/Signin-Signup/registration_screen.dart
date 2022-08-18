@@ -48,13 +48,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 150.h,
+              height: 200.h,
               width: ScreenUtil().screenWidth,
               child: Padding(
-                padding: EdgeInsets.only(left: 20.w),
+                padding: EdgeInsets.only(left: 40.w),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
                       onPressed: null,
@@ -63,10 +63,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         color: Colors.transparent,
                       ),
                     ),
-                    Text(
-                      "Sign Up",
-                      style: TextStyle(fontSize: 22.sp, color: Colors.white),
-                    ),
+                    Image(image: AssetImage('Images/icon.png')),
                   ],
                 ),
               ),
@@ -77,34 +74,28 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(28.r),
-                    topRight: Radius.circular(28.r),
+                    topLeft: Radius.circular(35.r),
+                    topRight: Radius.circular(35.r),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20.w),
+                  padding: EdgeInsets.all(40.w),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 20.h,
+                          height: 10.h,
                         ),
                         Text(
-                          "ReCycle",
-                          style: TextStyle(
-                              fontSize: 22.sp, color: Colors.green[400]),
+                          "Sign Up",
+                          style:
+                              TextStyle(fontSize: 35, color: Colors.green[400]),
                         ),
-                        Text(
-                          "Sell your unwanted items",
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            color: Color(0xFFBBBBBB),
-                          ),
-                        ),
+
                         SizedBox(
-                          height: 15.h,
+                          height: 20,
                         ),
                         Row(
                           children: [
@@ -131,7 +122,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 decoration: InputDecoration(
                                   labelText: 'EMAIL',
                                   labelStyle: TextStyle(
-                                    fontSize: 15.sp,
+                                    fontSize: 15,
                                     color: Colors.green[400],
                                   ),
                                 ),
@@ -140,7 +131,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ],
                         ),
                         SizedBox(
-                          height: 10.h,
+                          height: 30.h,
                         ),
                         Row(
                           children: [
@@ -168,7 +159,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 decoration: InputDecoration(
                                   labelText: 'PASSWORD',
                                   labelStyle: TextStyle(
-                                    fontSize: 15.sp,
+                                    fontSize: 15,
                                     color: Colors.green[400],
                                   ),
                                   suffixIcon: _obscureText == true

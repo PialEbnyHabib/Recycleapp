@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:recylce/Chemical.dart';
 import 'package:recylce/Electronics.dart';
 import 'package:recylce/Metals.dart';
@@ -9,11 +11,47 @@ import 'package:recylce/Pickup.dart';
 import 'package:recylce/Plastic.dart';
 import 'package:recylce/Sell items.dart';
 import 'package:recylce/Buy items.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'Signin-Signup/login_screen.dart';
+
+final List data = [
+  {
+    "title": "Image 1",
+    "url":
+        "https://ecocycle.com.au/wp-content/uploads/2019/04/Why-recycling-is-important-for-the-future.jpg"
+  },
+  {
+    "title": "Image 2",
+    "url":
+        "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F23%2F2021%2F04%2F28%2Frecycling-for-money-2000.jpg"
+  },
+  {
+    "title": "Image 3",
+    "url":
+        "https://media.generalkinematics.com/wp-content/uploads/2014/04/plastic-recycling-955x500.png"
+  },
+  {
+    "title": "Image 4",
+    "url":
+        "https://media.greenmatters.com/brand-img/d-9yrYj4m/0x0/why-is-recycling-important-1587135431361.jpg"
+  },
+  {
+    "title": "Image 5",
+    "url":
+        "https://ecocycle.com.au/wp-content/uploads/2019/08/Fun-Facts_-Why-is-recycling-important_.jpg"
+  },
+  {
+    "title": "Image 6",
+    "url":
+        "https://thumbs.dreamstime.com/b/recycle-waste-bins-different-trash-types-color-containers-sorting-wastes-organic-trash-paper-can-glass-plastic-bottle-150034531.jpg"
+  },
+];
 
 void main() => runApp(Home());
 
 class Home extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(home: Homepage());
@@ -21,7 +59,8 @@ class Home extends StatelessWidget {
 }
 
 class Homepage extends StatelessWidget {
-  // This widget is the root of your application.
+  // This widget is the root of your application
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,11 +68,42 @@ class Homepage extends StatelessWidget {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          // menubar
+          actions: [
+            PopupMenuButton(
+                icon: Icon(Icons.menu, color: Colors.blue),
+                // add icon, by default "3 dot" icon
+                // icon: Icon(Icons.book)
+                itemBuilder: (context) {
+                  return [
+                    PopupMenuItem<int>(
+                      value: 0,
+                      child: Text("My Account"),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 1,
+                      child: Text("Settings"),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("Logout"),
+                    ),
+                  ];
+                },
+                onSelected: (value) {
+                  if (value == 0) {
+                    print("My account menu is selected.");
+                  } else if (value == 1) {
+                    print("Settings menu is selected.");
+                  } else if (value == 2) {}
+                }),
+          ],
+
+          // end menu bar
+
           title: Text("Recycle"),
           backgroundColor: Colors.green[400],
           centerTitle: true,
-          leading: IconButton(
-              icon: Icon(Icons.menu, color: Colors.blue), onPressed: () {}),
         ),
 
         // body
@@ -42,7 +112,7 @@ class Homepage extends StatelessWidget {
           Row(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height / 4,
+                height: MediaQuery.of(context).size.height / 6,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     image:
@@ -58,23 +128,26 @@ class Homepage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
+
+          // But- SEll - Recycle items sell sections.
+
           Padding(
             padding: EdgeInsets.all(8.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Container(
-                color: Color.fromARGB(255, 219, 250, 222),
+                color: Color.fromARGB(255, 248, 248, 248),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
-                        color: Color.fromARGB(255, 219, 250, 222),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         child: Material(
                           child: Ink.image(
-                            width: 40,
-                            height: 40,
+                            width: 80,
+                            height: 80,
                             image: AssetImage('Images/sell_icon1.png'),
                             fit: BoxFit.cover,
                             child: InkWell(
@@ -93,11 +166,11 @@ class Homepage extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
-                        color: Color.fromARGB(255, 219, 250, 222),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         child: Material(
                           child: Ink.image(
-                            width: 40,
-                            height: 40,
+                            width: 80,
+                            height: 80,
                             image: AssetImage('Images/buy_icon1.png'),
                             fit: BoxFit.cover,
                             child: InkWell(
@@ -116,14 +189,14 @@ class Homepage extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Container(
-                        color: Color.fromARGB(255, 219, 250, 222),
-                        width: 50,
-                        height: 50,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        width: 80,
+                        height: 80,
                         child: Center(
                           child: Material(
                             child: Ink.image(
-                              width: 40,
-                              height: 40,
+                              width: 80,
+                              height: 80,
                               image: AssetImage('Images/pickup1.jpg'),
                               fit: BoxFit.cover,
                               child: InkWell(
@@ -144,22 +217,39 @@ class Homepage extends StatelessWidget {
               ),
             ),
           ),
+
+          // END OF But- SEll - Recycle items sell sections.
+
           SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Container(
-              color: Color.fromARGB(255, 219, 250, 222),
-              child: Text(
-                "Did you know that more than 20% of what goes in your Household bin can be recycled? Turn these recyclable Wastes to cash! The wastes you throw away everyday can fetch you money. For only 20 taka a bag, we will collect your recyclables from your door, on demand. Recycling couldn't be easier!",
-                style: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 18,
+
+          // coursel Option Image
+
+          Column(
+            children: [
+              // Implement the image carousel
+              CarouselSlider(
+                options: CarouselOptions(
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 4),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 400),
+                  height: MediaQuery.of(context).size.height / 5,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
                 ),
+                items: data.map((item) {
+                  return GridTile(
+                    child: Image.network(item["url"], fit: BoxFit.cover),
+                  );
+                }).toList(),
               ),
-            ),
+            ],
           ),
+
+          // CarouselSlider end
+
+          //
           SizedBox(
             height: 12,
           ),

@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:recylce/Home.dart';
 import 'package:recylce/widgets/customButton.dart';
 import 'package:recylce/widgets/myTextField.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserForm extends StatefulWidget {
   @override
@@ -13,12 +17,28 @@ class UserForm extends StatefulWidget {
 }
 
 class _UserFormState extends State<UserForm> {
+  File? image;
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _dobController = TextEditingController();
   TextEditingController _genderController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
+
   List<String> gender = ["Male", "Female", "Other"];
+
+  Future pickImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+      if (image == null) return;
+      final imageTemporary = File(image.path);
+      setState(() {
+        this.image = imageTemporary;
+      });
+    } on PlatformException catch (e) {
+      print("Failed to pick Image: $e");
+    }
+  }
 
   Future<void> _selectDateFromPicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -47,6 +67,7 @@ class _UserFormState extends State<UserForm> {
           "dob": _dobController.text,
           "gender": _genderController.text,
           "age": _ageController.text,
+          "Picture": image.toString(),
         })
         .then((value) =>
             Navigator.push(context, MaterialPageRoute(builder: (_) => Home())))
@@ -123,6 +144,29 @@ class _UserFormState extends State<UserForm> {
                 SizedBox(
                   height: 50.h,
                 ),
+
+                //Image
+                InkWell(
+                  child: Container(
+                    height: 100,
+                    width: 150,
+                    child: image == null
+                        ? const Center(child: Text("No Image Selected"))
+                        : Image.file(
+                            image!,
+                            height: 160,
+                            width: 160,
+                            fit: BoxFit.cover,
+                          ),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 225, 235, 226),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onTap: pickImage,
+                ),
+
+                // END Image
 
                 // elevated button
                 customButton("Continue", () => sendUserDataToDB()),
