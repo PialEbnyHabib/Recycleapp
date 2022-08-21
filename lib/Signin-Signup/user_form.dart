@@ -18,6 +18,7 @@ class UserForm extends StatefulWidget {
 
 class _UserFormState extends State<UserForm> {
   File? image;
+
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _dobController = TextEditingController();
@@ -145,24 +146,29 @@ class _UserFormState extends State<UserForm> {
                   height: 50.h,
                 ),
 
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'https://images.app.goo.gl/s3JYegbnbng5XCwY7'),
+                ),
+
                 //Image
                 InkWell(
                   child: Container(
-                    height: 100,
-                    width: 150,
-                    child: image == null
-                        ? const Center(child: Text("No Image Selected"))
-                        : Image.file(
-                            image!,
-                            height: 160,
-                            width: 160,
-                            fit: BoxFit.cover,
-                          ),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 225, 235, 226),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
+                      height: 100,
+                      width: 150,
+                      child: image == null
+                          ? CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                'https://png.pngitem.com/pimgs/s/649-6490124_katie-notopoulos-katienotopoulos-i-write-about-tech-round.png',
+                              ),
+                              radius: 64,
+                            )
+                          : CircleAvatar(
+                              backgroundImage: FileImage(
+                                image!,
+                              ),
+                              radius: 64,
+                            )),
                   onTap: pickImage,
                 ),
 

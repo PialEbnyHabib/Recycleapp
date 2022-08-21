@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recylce/Chat/Chatlist.dart';
 
 void main() => runApp(Chat());
 
@@ -33,10 +34,7 @@ class Chat extends StatelessWidget {
             height: 60,
           ),
           const Center(
-            child: Text(
-              'Chat',
-              style: TextStyle(fontSize: 50),
-            ),
+            child: Chatlist(),
           ),
         ]),
       ),

@@ -316,7 +316,7 @@ class _UsedItemsState extends State<UsedItems> {
                 "Price": _Controller1.text,
                 "Details": _Controlle2.text,
                 "Used Time": _Controlle3.text,
-                "Image": image.toString()
+                '$Image': image.toString()
               };
               FirebaseFirestore.instance.collection(" Used items").add(data);
             },

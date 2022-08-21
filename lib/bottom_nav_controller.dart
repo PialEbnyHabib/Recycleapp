@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recylce/Home.dart';
 import 'package:recylce/Chat.dart';
 import 'package:recylce/cart.dart';
+import 'package:recylce/Chat/Chatlist.dart';
 
 class BottomNavController extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class BottomNavController extends StatefulWidget {
 class _BottomNavControllerState extends State<BottomNavController> {
   final _pages = [
     Home(),
-    Chat(),
+    Chatlist(),
     Cart(),
   ];
   var _currentIndex = 0;
