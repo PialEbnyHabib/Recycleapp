@@ -105,7 +105,7 @@ class Recycleitems extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
@@ -185,7 +185,7 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
@@ -265,7 +265,7 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
@@ -345,13 +345,13 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Container(
-                              color: Colors.green[400],
+                              color: Color.fromARGB(255, 211, 255, 209),
                               child: Material(
                                 child: Ink.image(
                                   width: 50,
@@ -426,13 +426,13 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Container(
-                              color: Colors.green[400],
+                              color: Color.fromARGB(255, 211, 255, 209),
                               child: Material(
                                 child: Ink.image(
                                   width: 50,
@@ -506,7 +506,7 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(

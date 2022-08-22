@@ -42,11 +42,12 @@ class Sellitems extends StatelessWidget {
           height: 25,
         ),
         Container(
-          color: Color.fromARGB(255, 219, 250, 222),
+          color: Colors.transparent,
           child: Text(
             "Hello User,",
             style: TextStyle(
               fontStyle: FontStyle.normal,
+              fontWeight: FontWeight.w500,
               fontSize: 20,
             ),
           ),
@@ -54,13 +55,17 @@ class Sellitems extends StatelessWidget {
         SizedBox(
           height: 6,
         ),
-        Container(
-          color: Color.fromARGB(255, 219, 250, 222),
-          child: Text(
-            "Did you know that more than 20% of what goes in your Household bin can be recycled? For only 20 taka a bag, we will collect your recyclables from your door, on demand. Recycling couldn't be easier!",
-            style: TextStyle(
-              fontStyle: FontStyle.normal,
-              fontSize: 20,
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Container(
+            color: Colors.transparent,
+            child: Text(
+              "Did you know that more than 20% of what goes in your Household bin can be recycled? For only 20 taka a bag, we will collect your recyclables from your door, on demand. Recycling couldn't be easier!",
+              style: TextStyle(
+                fontStyle: FontStyle.normal,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         ),
@@ -169,7 +174,7 @@ class Sellitems extends StatelessWidget {
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              Useditems()));
+                                              UsedItems()));
                                 },
                               ),
                             ),
@@ -193,7 +198,7 @@ class Sellitems extends StatelessWidget {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        Useditems()));
+                                        UsedItems()));
                           },
                         ),
                       ),
@@ -215,7 +220,7 @@ class Sellitems extends StatelessWidget {
                                     Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
                                             builder: (BuildContext context) =>
-                                                Useditems()));
+                                                UsedItems()));
                                   },
                                 ),
                               ),

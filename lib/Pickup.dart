@@ -88,7 +88,7 @@ class Pickup extends StatelessWidget {
                     autoPlayInterval: const Duration(seconds: 2),
                     autoPlayAnimationDuration:
                         const Duration(milliseconds: 400),
-                    height: MediaQuery.of(context).size.height / 4.5,
+                    height: MediaQuery.of(context).size.height / 5,
                     enlargeCenterPage: true,
                     scrollDirection: Axis.horizontal,
                   ),
@@ -106,11 +106,12 @@ class Pickup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                color: const Color.fromARGB(255, 219, 250, 222),
+                color: Colors.transparent,
                 child: const Text(
                   "We are on a mission to make Recycling easier for everyone. At the moment , our power pickup service is not yet available in every area. So in the meantime keep your city clean by using a local Trash management system. Recycling couldn't be easier!",
                   style: TextStyle(
-                    fontStyle: FontStyle.normal,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
                     fontSize: 18,
                   ),
                 ),
@@ -139,6 +140,7 @@ class Pickup extends StatelessWidget {
                           "Contact your local\ntrash management",
                           style: TextStyle(
                             fontStyle: FontStyle.normal,
+                            fontWeight: FontWeight.w500,
                             fontSize: 14,
                           ),
                         ),

@@ -289,7 +289,7 @@ class Buyitems extends StatelessWidget {
                                 child: Image(
                                   width: 25,
                                   height: 25,
-                                  image: AssetImage('Images/arrow.ico'),
+                                  image: AssetImage('Images/flash.jpg'),
                                   fit: BoxFit.cover,
                                 ),
                                 onTap: () {
@@ -437,7 +437,7 @@ class Buyitems extends StatelessWidget {
                                 child: Image(
                                   width: 25,
                                   height: 25,
-                                  image: AssetImage('Images/arrow.ico'),
+                                  image: AssetImage('Images/for_you.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 onTap: () {
@@ -586,7 +586,7 @@ class Buyitems extends StatelessWidget {
                                 child: Image(
                                   width: 25,
                                   height: 25,
-                                  image: AssetImage('Images/arrow.ico'),
+                                  image: AssetImage('Images/new_arrival.jpg'),
                                   fit: BoxFit.cover,
                                 ),
                                 onTap: () {
@@ -735,7 +735,7 @@ class Buyitems extends StatelessWidget {
                                 child: Image(
                                   width: 25,
                                   height: 25,
-                                  image: AssetImage('Images/arrow.ico'),
+                                  image: AssetImage('Images/viewed.png'),
                                   fit: BoxFit.cover,
                                 ),
                                 onTap: () {
