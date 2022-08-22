@@ -5,10 +5,11 @@ import 'package:recylce/Buy%20items.dart';
 import 'package:recylce/Home.dart';
 import "package:recylce/Recycle Items.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:recylce/Product_details_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:recylce/Chat/Chatpage.dart';
+import 'package:recylce/bottom_nav_controller.dart';
 
 class Chatlist extends StatefulWidget {
   const Chatlist();
@@ -66,7 +67,7 @@ class Chatlistuser extends State<Chatlist> {
             Row(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 4,
+                  height: MediaQuery.of(context).size.height / 6,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       image: const DecorationImage(
@@ -95,7 +96,7 @@ class Chatlistuser extends State<Chatlist> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => ProductDetails(_Users[index]))),
+                              builder: (_) => Chatpage(_Users[index]))),
                       child: Card(
                         elevation: 3,
                         child: Column(
