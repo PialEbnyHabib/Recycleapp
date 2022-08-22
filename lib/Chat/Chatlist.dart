@@ -54,7 +54,7 @@ class Chatlistuser extends State<Chatlist> {
             icon: const Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                    builder: (BuildContext context) => Buyitems())),
+                    builder: (BuildContext context) => BottomNavController())),
           ),
           title: const Text("Users"),
           backgroundColor: Colors.green[400],

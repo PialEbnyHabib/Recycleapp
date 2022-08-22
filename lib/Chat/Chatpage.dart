@@ -24,8 +24,7 @@ class _ChatpageState extends State<Chatpage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                  builder: (BuildContext context) => BottomNavController())),
+              MaterialPageRoute(builder: (BuildContext context) => Chatlist())),
         ),
         title: Text(
           widget._Users['Name'],
@@ -37,36 +36,37 @@ class _ChatpageState extends State<Chatpage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 12, right: 12, top: 10),
-          child: Column(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
                   icon: Icon(
                     Icons.face,
-                    color: Colors.blueAccent,
+                    color: Colors.green[400],
                   ),
                   onPressed: () {}),
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
                       hintText: "Type Something...",
-                      hintStyle: TextStyle(color: Colors.blueAccent),
+                      hintStyle: TextStyle(color: Colors.green[400]),
                       border: InputBorder.none),
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.photo_camera, color: Colors.blueAccent),
+                icon: Icon(Icons.photo_camera, color: Colors.green[400]),
                 onPressed: () {},
               ),
               IconButton(
-                icon: Icon(Icons.attach_file, color: Colors.blueAccent),
+                icon: Icon(Icons.attach_file, color: Colors.green[400]),
                 onPressed: () {},
               ),
               SizedBox(width: 15),
               Container(
                 padding: const EdgeInsets.all(15.0),
                 decoration: BoxDecoration(
-                    color: Colors.blueAccent, shape: BoxShape.circle),
+                    color: Colors.green[400], shape: BoxShape.circle),
                 child: InkWell(
                   child: Icon(
                     Icons.keyboard_voice,
