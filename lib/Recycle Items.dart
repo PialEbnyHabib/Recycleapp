@@ -1,13 +1,15 @@
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:recylce/Chemical.dart';
 import 'package:recylce/Electronics.dart';
+import 'package:recylce/Home.dart';
 import 'package:recylce/Household.dart';
 import 'package:recylce/Metals.dart';
 import 'package:recylce/Papers.dart';
 import 'package:recylce/Plastic.dart';
 import 'package:recylce/Product_category.dart';
 import 'package:recylce/Sell items.dart';
-import 'package:recylce/Home.dart';
 
 void main() => runApp(Recycleitems());
 
@@ -33,7 +35,7 @@ class Recycleitems extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 6,
+                  height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       image:
@@ -103,7 +105,7 @@ class Recycleitems extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
@@ -183,7 +185,7 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
@@ -263,7 +265,7 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
@@ -343,13 +345,13 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Container(
-                              color: Colors.green[400],
+                              color: Color.fromARGB(255, 211, 255, 209),
                               child: Material(
                                 child: Ink.image(
                                   width: 50,
@@ -424,13 +426,13 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Container(
-                              color: Colors.green[400],
+                              color: Color.fromARGB(255, 211, 255, 209),
                               child: Material(
                                 child: Ink.image(
                                   width: 50,
@@ -504,7 +506,7 @@ class Recycleitems extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      color: Colors.green[400],
+                      color: Color.fromARGB(255, 211, 255, 209),
                       child: Row(
                         children: [
                           ClipRRect(

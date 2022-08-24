@@ -48,11 +48,11 @@ class Sellitems extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
             onPressed: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (BuildContext context) => Home())),
           ),
-          title: Text("Sell items"),
+          title: const Text("Sell items"),
           backgroundColor: Colors.green[400],
           centerTitle: true,
         ),
@@ -74,66 +74,15 @@ class Sellitems extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 100,
+            height: 45,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: Material(
-                    child: Ink.image(
-                      width: 120,
-                      height: 120,
-                      image: AssetImage('Images/Recyclable.png'),
-                      fit: BoxFit.cover,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      ProductCategory()));
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 50),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  child: Material(
-                    child: Ink.image(
-                      width: 120,
-                      height: 120,
-                      image: AssetImage('Images/Used Product.png'),
-                      fit: BoxFit.cover,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      UsedItems()));
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 65),
           Column(
             children: [
               // Implement the image carousel
               CarouselSlider(
                 options: CarouselOptions(
                   autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 4),
+                  autoPlayInterval: const Duration(seconds: 2),
                   autoPlayAnimationDuration: const Duration(milliseconds: 400),
                   height: MediaQuery.of(context).size.height / 5,
                   enlargeCenterPage: true,
@@ -146,6 +95,171 @@ class Sellitems extends StatelessWidget {
                 }).toList(),
               ),
             ],
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Column(
+              children: [
+                Container(
+                  color: const Color.fromARGB(255, 211, 255, 209),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          color: const Color.fromARGB(255, 211, 255, 209),
+                          child: Material(
+                            child: Ink.image(
+                              width: 53,
+                              height: 53,
+                              image: const AssetImage('Images/recycle.ico'),
+                              fit: BoxFit.cover,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              const ProductCategory()));
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: InkWell(
+                          child: Container(
+                              color: const Color.fromARGB(255, 211, 255, 209),
+                              child: const Text(
+                                'Recycle Items',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ),
+                              )),
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const ProductCategory()));
+                          },
+                        ),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          color: Colors.white24,
+                          width: 75,
+                          height: 70,
+                          child: Center(
+                            child: Material(
+                              child: Ink.image(
+                                width: 25,
+                                height: 25,
+                                image: const AssetImage('Images/arrow.ico'),
+                                fit: BoxFit.cover,
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                const ProductCategory()));
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  color: const Color.fromARGB(255, 211, 255, 209),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          color: const Color.fromARGB(255, 211, 255, 209),
+                          child: Material(
+                            child: Ink.image(
+                              width: 53,
+                              height: 53,
+                              image: const AssetImage('Images/used.ico'),
+                              fit: BoxFit.cover,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              const UsedItems()));
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: InkWell(
+                          child: Container(
+                              color: const Color.fromARGB(255, 211, 255, 209),
+                              child: const Text(
+                                'Used Items',
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.green,
+                                ),
+                              )),
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const UsedItems()));
+                          },
+                        ),
+                      ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          color: Colors.white24,
+                          width: 75,
+                          height: 70,
+                          child: Center(
+                            child: Material(
+                              child: Ink.image(
+                                width: 25,
+                                height: 25,
+                                image: const AssetImage('Images/arrow.ico'),
+                                fit: BoxFit.cover,
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (BuildContext context) =>
+                                                const UsedItems()));
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ]),
       ),

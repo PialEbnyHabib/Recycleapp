@@ -45,7 +45,7 @@ class UplodeSuccess extends StatelessWidget {
             children: [
               InkWell(
                 child: Container(
-                  height: 100,
+                  height: 80,
                   width: 150,
                   decoration: BoxDecoration(
                     color: Colors.green[400],

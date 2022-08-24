@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:recylce/Chemical.dart';
 import 'package:recylce/Electronics.dart';
+import 'package:recylce/Household.dart';
 import 'package:recylce/Metals.dart';
 import 'package:recylce/Papers.dart';
 import 'package:recylce/Pickup.dart';
@@ -234,7 +235,7 @@ class Homepage extends StatelessWidget {
               CarouselSlider(
                 options: CarouselOptions(
                   autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 4),
+                  autoPlayInterval: const Duration(seconds: 2),
                   autoPlayAnimationDuration: const Duration(milliseconds: 400),
                   height: MediaQuery.of(context).size.height / 5,
                   enlargeCenterPage: true,
@@ -310,8 +311,31 @@ class Homepage extends StatelessWidget {
             children: [
               InkWell(
                 child: Container(
-                  height: 50,
-                  width: 65,
+                  height: 57,
+                  width: 57,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
+                      image: DecorationImage(
+                          image: AssetImage('Images/household.ico')),
+                      color: Color.fromARGB(255, 211, 255, 209),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(750),
+                        topRight: Radius.circular(750),
+                        bottomLeft: Radius.circular(750),
+                        bottomRight: Radius.circular(750),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Household()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 57,
+                  width: 57,
                   decoration: BoxDecoration(
                       border: Border.all(
                           width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
@@ -333,8 +357,8 @@ class Homepage extends StatelessWidget {
               SizedBox(width: 0),
               InkWell(
                 child: Container(
-                  height: 50,
-                  width: 65,
+                  height: 57,
+                  width: 57,
                   decoration: BoxDecoration(
                       border: Border.all(
                           width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
@@ -356,8 +380,8 @@ class Homepage extends StatelessWidget {
               SizedBox(width: 0),
               InkWell(
                 child: Container(
-                  height: 50,
-                  width: 65,
+                  height: 57,
+                  width: 57,
                   decoration: BoxDecoration(
                       border: Border.all(
                           width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
@@ -379,8 +403,8 @@ class Homepage extends StatelessWidget {
               SizedBox(width: 0),
               InkWell(
                 child: Container(
-                  height: 50,
-                  width: 65,
+                  height: 57,
+                  width: 57,
                   decoration: BoxDecoration(
                       border: Border.all(
                           width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
@@ -402,8 +426,8 @@ class Homepage extends StatelessWidget {
               SizedBox(width: 0),
               InkWell(
                 child: Container(
-                  height: 50,
-                  width: 65,
+                  height: 57,
+                  width: 57,
                   decoration: BoxDecoration(
                       border: Border.all(
                           width: 2.0, color: Color.fromARGB(255, 70, 183, 74)),
@@ -431,9 +455,33 @@ class Homepage extends StatelessWidget {
               InkWell(
                 child: Container(
                   height: 25,
-                  width: 65,
+                  width: 57,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
+                  ),
+                  child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Household",
+                        style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 13,
+                        ),
+                      )),
+                ),
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => Household()));
+                },
+              ),
+              SizedBox(width: 0),
+              InkWell(
+                child: Container(
+                  height: 25,
+                  width: 57,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
                   ),
                   child: Align(
                       alignment: Alignment.center,
@@ -441,6 +489,7 @@ class Homepage extends StatelessWidget {
                         "Papers",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
                           fontSize: 13,
                         ),
                       )),
@@ -454,9 +503,9 @@ class Homepage extends StatelessWidget {
               InkWell(
                 child: Container(
                   height: 25,
-                  width: 65,
+                  width: 57,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
                   ),
                   child: Align(
                       alignment: Alignment.center,
@@ -464,6 +513,7 @@ class Homepage extends StatelessWidget {
                         "Plastics",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
                           fontSize: 13,
                         ),
                       )),
@@ -477,9 +527,9 @@ class Homepage extends StatelessWidget {
               InkWell(
                 child: Container(
                   height: 25,
-                  width: 65,
+                  width: 57,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
                   ),
                   child: Align(
                       alignment: Alignment.center,
@@ -487,6 +537,7 @@ class Homepage extends StatelessWidget {
                         "Metals",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
                           fontSize: 13,
                         ),
                       )),
@@ -500,9 +551,9 @@ class Homepage extends StatelessWidget {
               InkWell(
                 child: Container(
                   height: 25,
-                  width: 65,
+                  width: 57,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
                   ),
                   child: Align(
                       alignment: Alignment.center,
@@ -510,6 +561,7 @@ class Homepage extends StatelessWidget {
                         "Chemicals",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
+                          fontWeight: FontWeight.w500,
                           fontSize: 13,
                         ),
                       )),
@@ -523,9 +575,9 @@ class Homepage extends StatelessWidget {
               InkWell(
                 child: Container(
                   height: 25,
-                  width: 65,
+                  width: 57,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
                   ),
                   child: Align(
                     alignment: Alignment.center,
@@ -533,6 +585,7 @@ class Homepage extends StatelessWidget {
                       "Electronics",
                       style: TextStyle(
                         fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.w500,
                         fontSize: 13,
                       ),
                     ),
@@ -546,7 +599,7 @@ class Homepage extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 30,
+            height: 25,
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
@@ -577,7 +630,7 @@ class Homepage extends StatelessWidget {
                         child: Container(
                           color: Colors.white24,
                           width: 80,
-                          height: 55,
+                          height: 53,
                           child: Center(
                             child: Image(
                               width: 25,
@@ -670,7 +723,7 @@ class Homepage extends StatelessWidget {
                   height: 40,
                   width: 95,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(11),
                       topRight: Radius.circular(11),
@@ -681,10 +734,11 @@ class Homepage extends StatelessWidget {
                   child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        "Bag your\nitems",
+                        "1. Bag your\n     items",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
                         ),
                       )),
                 ),
@@ -696,7 +750,7 @@ class Homepage extends StatelessWidget {
                   height: 40,
                   width: 95,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(11),
                       topRight: Radius.circular(11),
@@ -707,10 +761,11 @@ class Homepage extends StatelessWidget {
                   child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        "Book a\npickup",
+                        "2. Book a\n  pickup",
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
                         ),
                       )),
                 ),
@@ -722,7 +777,7 @@ class Homepage extends StatelessWidget {
                   height: 40,
                   width: 95,
                   decoration: BoxDecoration(
-                    color: Colors.green[400],
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(11),
                       topRight: Radius.circular(11),
@@ -733,10 +788,11 @@ class Homepage extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      "We'll\ncollect it",
+                      " 3. We'll\n collect it",
                       style: TextStyle(
                         fontStyle: FontStyle.normal,
-                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
                       ),
                     ),
                   ),
@@ -751,12 +807,13 @@ class Homepage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Container(
-              color: Color.fromARGB(255, 219, 250, 222),
+              color: Colors.transparent,
               child: Text(
                 "Help us help you to keep your city safe and grab a few bucks in the process. Recycling couldn't be easier!",
                 style: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 17,
                 ),
               ),
             ),

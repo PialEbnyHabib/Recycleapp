@@ -164,6 +164,38 @@ class _UsedItemsScreenState extends State<UsedItems> {
           const SizedBox(
             height: 25,
           ),
+          InkWell(
+            child: Container(
+              margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+              child: Flexible(
+                flex: 1,
+                child: TextField(
+                  cursorColor: Colors.grey,
+                  decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none),
+                      hintText: 'Search',
+                      hintStyle:
+                          const TextStyle(color: Colors.grey, fontSize: 18),
+                      prefixIcon: Container(
+                        padding: const EdgeInsets.all(15),
+                        child: Image.asset('Images/search.ico'),
+                        width: 18,
+                      )),
+                ),
+              ),
+              padding: const EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(3)),
+            ),
+          ),
+          const SizedBox(
+            height: 25,
+          ),
           const InkWell(
             child: Center(
               child: Text(

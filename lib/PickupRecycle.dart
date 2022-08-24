@@ -131,7 +131,7 @@ class _PickupRecycle extends State<PickupRecycle> {
                 Container(
                   child: GestureDetector(
                     child: Container(
-                      height: 80,
+                      height: 60,
                       width: 350,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
