@@ -32,7 +32,6 @@ class Chatlistuser extends State<Chatlist> {
           "Name": qn.docs[i]["name"],
           "Age": qn.docs[i]["age"],
           "Gender": qn.docs[i]["gender"],
-          "Picture": qn.docs[i]["Picture"],
         });
       }
     });
@@ -98,14 +97,10 @@ class Chatlistuser extends State<Chatlist> {
                               builder: (_) => Chatpage(_Users[index]))),
                       child: Card(
                         elevation: 3,
-                        child: Column(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            AspectRatio(
-                              aspectRatio: 2,
-                              child: Container(
-                                  child:
-                                      Image.network(_Users[index]["Piture"])),
-                            ),
                             Text(
                               "${_Users[index]["Name"]}",
                               style: const TextStyle(

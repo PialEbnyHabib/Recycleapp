@@ -237,7 +237,7 @@ class _UsedItemsScreenState extends State<UsedItems> {
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: TextField(
-              controller: _Controller,
+              controller: _Controller1,
               readOnly: true,
               decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
