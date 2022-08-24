@@ -146,11 +146,6 @@ class _UserFormState extends State<UserForm> {
                   height: 50.h,
                 ),
 
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://images.app.goo.gl/s3JYegbnbng5XCwY7'),
-                ),
-
                 //Image
                 InkWell(
                   child: Container(

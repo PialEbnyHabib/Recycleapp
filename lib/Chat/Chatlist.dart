@@ -32,6 +32,7 @@ class Chatlistuser extends State<Chatlist> {
           "Name": qn.docs[i]["name"],
           "Age": qn.docs[i]["age"],
           "Gender": qn.docs[i]["gender"],
+          "Picture": qn.docs[i]["Picture"],
         });
       }
     });
@@ -86,11 +87,9 @@ class Chatlistuser extends State<Chatlist> {
 
             //show fetching products
             Expanded(
-              child: GridView.builder(
+              child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   itemCount: _Users.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, childAspectRatio: 1),
                   itemBuilder: (_, index) {
                     return GestureDetector(
                       onTap: () => Navigator.push(
@@ -101,6 +100,12 @@ class Chatlistuser extends State<Chatlist> {
                         elevation: 3,
                         child: Column(
                           children: [
+                            AspectRatio(
+                              aspectRatio: 2,
+                              child: Container(
+                                  child:
+                                      Image.network(_Users[index]["Piture"])),
+                            ),
                             Text(
                               "${_Users[index]["Name"]}",
                               style: const TextStyle(

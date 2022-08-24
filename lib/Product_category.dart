@@ -9,6 +9,8 @@ import 'package:recylce/Product_details_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:recylce/Sell%20items.dart';
+import 'package:recylce/bottom_nav_controller.dart';
 
 class ProductCategory extends StatefulWidget {
   const ProductCategory();
@@ -53,7 +55,7 @@ class RecycleProduct extends State<ProductCategory> {
             icon: const Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
-                    builder: (BuildContext context) => Buyitems())),
+                    builder: (BuildContext context) => Sellitems())),
           ),
           title: const Text("Product Category"),
           backgroundColor: Colors.green[400],
@@ -66,7 +68,7 @@ class RecycleProduct extends State<ProductCategory> {
             Row(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 4,
+                  height: MediaQuery.of(context).size.height / 6,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       image: const DecorationImage(

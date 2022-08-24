@@ -133,10 +133,11 @@ flutter:
     - Images/for_you.png
     - Images/new_arrival.jpg
     - Images/viewed.png
-    
-
-
-    
+    - Images/Recyclable.png
+    - Images/Used Product.png
+    - Images/location.jpg
+    - Images/location2.png
+    - Images/rider.gif
 
   #   - images/a_dot_ham.jpeg
 

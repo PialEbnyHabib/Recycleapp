@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, unused_import
-
 import 'package:flutter/material.dart';
 import 'package:recylce/Chemical.dart';
 import 'package:recylce/Electronics.dart';
@@ -9,6 +7,7 @@ import 'package:recylce/Papers.dart';
 import 'package:recylce/Plastic.dart';
 import 'package:recylce/Product_category.dart';
 import 'package:recylce/Sell items.dart';
+import 'package:recylce/Home.dart';
 
 void main() => runApp(Recycleitems());
 
@@ -21,8 +20,7 @@ class Recycleitems extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                  builder: (BuildContext context) => Sellitems())),
+              MaterialPageRoute(builder: (BuildContext context) => Home())),
         ),
         title: Text("Recycle items"),
         backgroundColor: Colors.green[400],
@@ -35,7 +33,7 @@ class Recycleitems extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 4,
+                  height: MediaQuery.of(context).size.height / 6,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       image:

@@ -65,7 +65,7 @@ class RecycleProduct extends State<BuyCategory> {
             Row(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 4,
+                  height: MediaQuery.of(context).size.height / 6,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       image:

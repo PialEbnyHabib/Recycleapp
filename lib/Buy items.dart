@@ -8,6 +8,7 @@ import 'package:recylce/Home.dart';
 import 'package:recylce/Most%20Viewed.dart';
 import 'package:recylce/New%20Arrival.dart';
 import 'package:recylce/Product_category.dart';
+import 'package:recylce/bottom_nav_controller.dart';
 
 void main() => runApp(Buyitems());
 
@@ -32,7 +33,7 @@ class Buyitems extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height / 4,
+                  height: MediaQuery.of(context).size.height / 6,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     image:

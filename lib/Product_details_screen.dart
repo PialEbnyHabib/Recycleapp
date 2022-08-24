@@ -121,7 +121,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               height: 10,
             ),
             Text(
-              "\৳ ${widget._product['Price'].toString()}",
+              " ${widget._product['Price'].toString()} \৳ Per KiloGram",
               style: TextStyle(
                   fontWeight: FontWeight.bold, fontSize: 30, color: Colors.red),
             ),

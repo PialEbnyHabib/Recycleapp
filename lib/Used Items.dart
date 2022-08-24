@@ -1,37 +1,81 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:recylce/Sell%20items.dart';
+import 'package:recylce/Used%20Items.dart';
+import 'package:recylce/Uplode_successfull.dart';
+import 'package:recylce/Home.dart';
 
 class UsedItems extends StatefulWidget {
   const UsedItems({Key? key}) : super(key: key);
 
   @override
-  State<UsedItems> createState() => _UsedItemsState();
+  State<UsedItems> createState() => _UsedItemsScreenState();
 }
 
-class _UsedItemsState extends State<UsedItems> {
-  File? image;
+class _UsedItemsScreenState extends State<UsedItems> {
+  // File? image;
 
   final TextEditingController _Controller = TextEditingController();
   final TextEditingController _Controller1 = TextEditingController();
   final TextEditingController _Controlle2 = TextEditingController();
   final TextEditingController _Controlle3 = TextEditingController();
   List<String> Catagory = ["Paper", "Metal", "Plastic", "Household", "Vehicle"];
+  List<String> Price = [
+    "500-1000",
+    "1000-1500",
+    "1500-2000",
+    "2000-2500",
+    "2500-3000"
+  ];
 
-  Future pickImage() async {
+  File? _image;
+
+  CollectionReference UsedItems =
+      FirebaseFirestore.instance.collection('Used Items');
+
+  void addUsedItems() async {
+    final imgUrl = await UploadImage(_image!);
+    await UsedItems.add({
+      'catagory': _Controller.text.trim(),
+      'Price': _Controller1.text.trim(),
+      'details': _Controlle2.text.trim(),
+      'usedTime': _Controlle3.text.trim(),
+      'uploadTimes': DateTime.now(),
+      'image': imgUrl,
+    });
+  }
+
+  Future UploadImage(File _image) async {
+    String url;
+    String imgId = DateTime.now().millisecondsSinceEpoch.toString();
+    Reference reference = FirebaseStorage.instance
+        .ref()
+        .child("Used items")
+        .child("product_$imgId");
+    await reference.putFile(_image);
+    url = await reference.getDownloadURL();
+    return url;
+  }
+
+  final picker = ImagePicker();
+  Future imagePicker() async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final pick = await picker.pickImage(source: ImageSource.camera);
 
-      if (image == null) return;
-      final imageTemporary = File(image.path);
       setState(() {
-        this.image = imageTemporary;
+        if (pick != null) {
+          _image = File(pick.path);
+        } else {
+          print("No image selected");
+        }
       });
-    } on PlatformException catch (e) {
+    } catch (e) {
       print("Failed to pick Image: $e");
     }
   }
@@ -44,8 +88,7 @@ class _UsedItemsState extends State<UsedItems> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                  builder: (BuildContext context) => Sellitems())),
+              MaterialPageRoute(builder: (BuildContext context) => Home())),
         ),
         title: const Text("Used Items"),
         backgroundColor: Colors.green[400],
@@ -90,20 +133,21 @@ class _UsedItemsState extends State<UsedItems> {
                 child: Container(
                   height: 100,
                   width: 150,
-                  child: image == null
+                  child: _image == null
                       ? const Center(child: Text("No Image Selected"))
                       : Image.file(
-                          image!,
-                          height: 160,
-                          width: 160,
+                          _image!,
                           fit: BoxFit.cover,
+                          height: MediaQuery.of(context).size.height / 4,
                         ),
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 225, 235, 226),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                onTap: pickImage,
+                onTap: () {
+                  imagePicker();
+                },
               ),
 
               const SizedBox(
@@ -111,7 +155,7 @@ class _UsedItemsState extends State<UsedItems> {
               ),
 
               // button
-              Text("Select Image"),
+              const Text("Select Image"),
             ]),
             const SizedBox(
               height: 25,
@@ -137,25 +181,36 @@ class _UsedItemsState extends State<UsedItems> {
 
           // Catagory selection
 
-          TextField(
-            controller: _Controller,
-            readOnly: true,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(20.0),
-              hintText: "Select Catagory",
-              suffixIcon: DropdownButton<String>(
-                items: Catagory.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: new Text(value),
-                    onTap: () {
-                      setState(() {
-                        _Controller.text = value;
-                      });
-                    },
-                  );
-                }).toList(),
-                onChanged: (_) {},
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: TextField(
+              controller: _Controller,
+              readOnly: true,
+              decoration: InputDecoration(
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(255, 2, 4, 7),
+                  ),
+                ),
+                contentPadding: const EdgeInsets.only(left: 20, right: 20),
+                hintText: "Select Catagory",
+                suffixIcon: DropdownButton<String>(
+                  isExpanded: true,
+                  elevation: 0,
+                  // value: _Controller.text,
+                  items: Catagory.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: new Text(value),
+                      onTap: () {
+                        setState(() {
+                          _Controller.text = value;
+                        });
+                      },
+                    );
+                  }).toList(),
+                  onChanged: (_) {},
+                ),
               ),
             ),
           ),
@@ -178,32 +233,45 @@ class _UsedItemsState extends State<UsedItems> {
           const SizedBox(
             height: 5,
           ),
-          Container(
+
+          Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: TextField(
-              controller: _Controller1,
-              obscureText: false,
-              decoration: const InputDecoration(
-                focusColor: Color.fromARGB(255, 239, 248, 245),
-                hintText: "Select price",
-                hintStyle: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontSize: 15,
-                ),
-                enabledBorder: OutlineInputBorder(
+              controller: _Controller,
+              readOnly: true,
+              decoration: InputDecoration(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Color.fromARGB(255, 2, 4, 7),
                   ),
                 ),
-                // focusedBorder: OutlineInputBorder(
-                //   // borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                //   borderSide: BorderSide(
-                //     color: Color(0xffEFF3F8),
-                //   ),
-                // ),
+                contentPadding: const EdgeInsets.only(left: 20, right: 20),
+                hintText: "Select Price",
+                suffixIcon: DropdownButton<String>(
+                  isExpanded: true,
+                  elevation: 0,
+                  // value: _Controller1.text,
+                  items: Price.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        value.toString(),
+                        style:
+                            const TextStyle(fontSize: 15, color: Colors.black),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          _Controller1.text = value;
+                        });
+                      },
+                    );
+                  }).toList(),
+                  onChanged: (_) {},
+                ),
               ),
             ),
           ),
+
           const SizedBox(
             height: 10,
           ),
@@ -238,12 +306,6 @@ class _UsedItemsState extends State<UsedItems> {
                     color: Color.fromARGB(255, 2, 4, 7),
                   ),
                 ),
-                // focusedBorder: OutlineInputBorder(
-                //   // borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                //   borderSide: BorderSide(
-                //     color: Color(0xffEFF3F8),
-                //   ),
-                // ),
               ),
             ),
           ),
@@ -280,12 +342,6 @@ class _UsedItemsState extends State<UsedItems> {
                     color: Color.fromARGB(255, 2, 4, 7),
                   ),
                 ),
-                // focusedBorder: OutlineInputBorder(
-                //   // borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                //   borderSide: BorderSide(
-                //     color: Color(0xffEFF3F8),
-                //   ),
-                // ),
               ),
             ),
           ),
@@ -311,14 +367,15 @@ class _UsedItemsState extends State<UsedItems> {
               ),
             ),
             onTap: () {
-              Map<String, dynamic> data = {
-                "Catagory": _Controller.text,
-                "Price": _Controller1.text,
-                "Details": _Controlle2.text,
-                "Used Time": _Controlle3.text,
-                '$Image': image.toString()
-              };
-              FirebaseFirestore.instance.collection(" Used items").add(data);
+              UploadImage(_image!);
+              addUsedItems();
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UplodeSuccess(),
+                ),
+              );
             },
           ),
           const SizedBox(

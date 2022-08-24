@@ -13,6 +13,8 @@ import 'package:recylce/Sell items.dart';
 import 'package:recylce/Buy items.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'Signin-Signup/login_screen.dart';
+import 'package:recylce/Used Items.dart';
+import 'package:recylce/Recycle Items.dart';
 
 final List data = [
   {
@@ -204,7 +206,7 @@ class Homepage extends StatelessWidget {
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              Pickup()));
+                                              Recycleitems()));
                                 },
                               ),
                             ),
@@ -253,6 +255,7 @@ class Homepage extends StatelessWidget {
           SizedBox(
             height: 12,
           ),
+
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Column(
