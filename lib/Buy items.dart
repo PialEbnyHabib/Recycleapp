@@ -9,6 +9,7 @@ import 'package:recylce/Most%20Viewed.dart';
 import 'package:recylce/New%20Arrival.dart';
 import 'package:recylce/Product_category.dart';
 import 'package:recylce/bottom_nav_controller.dart';
+import 'package:recylce/Buyitems/Buyitemscatagory.dart';
 
 void main() => runApp(Buyitems());
 
@@ -151,7 +152,7 @@ class Buyitems extends StatelessWidget {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          ProductCategory()));
+                                          Buyitemscategory()));
                             },
                           ),
                         ),
