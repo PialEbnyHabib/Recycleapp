@@ -3,12 +3,13 @@
  <img src="Image/1.png" alt="icon" class="center">
 
  <div class="row">
-  <img src="Image/2.png" alt="" height='600' width='250'>
-  <img src="Image/3.png" alt="" height='600' width='250'>
+  <img src="Image/2.png" alt="" height='400' width='200'>
+  <img src="Image/3.png" alt="" height='400' width='200'>
+<img src="Image/4.png" alt="" height='400' width='200'>
+  <img src="Image/5.png" alt="" height='400' width='200'>
 </div>
 
-<img src="Image/4.png" alt="">
-  <img src="Image/5.png" alt="">
+
 
 ## Getting Started
 
