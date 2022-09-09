@@ -2,7 +2,7 @@
 
  <img src="Image/1.png" alt="icon" class="center">
 
- <div class="row">
+ <div class="center">
   <img src="Image/2.png" alt="" height='400' width='200'>
   <img src="Image/3.png" alt="" height='400' width='200'>
 <img src="Image/4.png" alt="" height='400' width='200'>
