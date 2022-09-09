@@ -1,6 +1,6 @@
 # recylce
 
-A new Flutter project.
+ <img src="Image/1.png" alt="icon" class="center">
 
 ## Getting Started
 
